@@ -9,6 +9,18 @@
 using namespace homework;
 
 int main() { 
+
+    int d = 1;
+    int e = 3; 
+    int f = 5;
+
+    homework::swap_ptr(&d, &e, &f);
+
+    std::cout << d << std::endl;
+    std::cout << e << std::endl;
+    std::cout << f << std::endl;
+
+    return 0;
   
 }
 

@@ -39,10 +39,65 @@ namespace homework {
   // The attack should use std::cout to print something like "<name> swings a <weapon>\n"
   // The setWeapon() method should set the weapon variable (the private member variable) 
 
+  class Knight : public Entity {
+
+   private:
+
+   std::string Weapon;
+
+   public:
+
+   //error, cannot bind non-const lvalue reference of type std::string&
+
+   Knight(const std::string& name) : Entity(name) {}
+
+   //remember, void functions do not return objects
+
+   void setWeapon(const std::string& W) {
+    Weapon = W;
+  
+   }
+
+   void attack() const override {
+    std::cout << name << "swings a great" << Weapon << "/n";
+   }
+
+   std::unique_ptr<Entity> clone() const override {
+    return std::make_unique<Knight>(*this);
+   }
+
+   };
+
+  
   // as 2.2
   // Derived class Sorcerer
   // TO DO: implement attack() and clone() and setAbility()
   // Same as the Knight class
+
+  class Sorcerer : public Entity {
+
+    private: 
+
+    std::string Ability;
+
+    public:
+
+    Sorcerer(const std::string& name) : Entity(name) {}
+
+    void setAbility(const std::string& A) {
+      Ability = A;
+    }
+
+    void attack() const override {
+      std::cout << name << "uses" << Ability << "/n";
+    }
+
+    std::unique_ptr<Entity> clone() const override {
+    return std::make_unique<Sorcerer>(*this);
+   }
+
+
+  };
 
   // as 2.3 (This is a stretch goal, hand it in, and if it does not work, you can still pass the assignment)
   // Duel class template
@@ -53,6 +108,46 @@ namespace homework {
   // - randomly select one of the two entities as the winner (use the random number generator above)
   // - print to std::cout "<name> wins the duel!\n"
   // - return a std::unique_ptr<Entity> to the winner (use clone() to copy the object)
+
+  //template typename is used as a sort of pointer to the classes
+
+  template <typename T1, typename T2> 
+
+  class Duel {
+
+    private:
+
+    T1* combatant1; 
+
+    T2* combatant2;
+
+    public:
+
+    Duel(T1* one, T2* two) : combatant1(one), combatant2(two) {}
+
+    double victory = dist(gen);
+
+    // the -> operator goes through the pointers combatant1/2 to the 
+    // attached classes to access the member functions, here attack()
+
+    // the smart pointer unique refers to anything coming from the entity class 
+    // to which the combatant classes are attached
+    std::unique_ptr<Entity> Fight() const {
+      combatant1->attack();
+      combatant2->attack();
+    }
+
+    //if the number is higher or lower than 0.5, one or the other, how, another pointer?
+    //if exactly 0.5, double fatality. IF statement.
+
+    //how to call, attach getName, a new pointer is likely needed to acces getName and clone. 
+
+    std::cout << getName() << ", Hail the Victorious!" << std::endl;
+
+
+  };
+
+
 
 } // namespace homework
 

@@ -20,6 +20,26 @@ int main() {
     std::cout << e << std::endl;
     std::cout << f << std::endl;
 
+    //for as2.hpp
+
+    homework::Knight K1{"Warden"};
+    K1.setWeapon("German Longswoard");
+    K1.attack();
+
+    homework::Sorcerer S1{"Denken"};
+    S1.setAbility("Energokinesis");
+    K1.attack();
+
+    //homework::Knight K("Warden");
+    //K.setWeapon("Toothed Longsword");
+
+    //homework::Sorcerer S("Denken");
+    //S.setAbility("Telekinesis");
+
+    //homework::Duel<homework::Knight, homework::Sorcerer> 
+
+
+
     return 0;
   
 }

@@ -49,7 +49,11 @@ namespace homework {
 
    //error, cannot bind non-const lvalue reference of type std::string&
 
+   //compilation error related to & and Entity(name)
+
    Knight(const std::string& name) : Entity(name) {}
+   //Knight(const Knight&) = default;
+   //default is set to allow cloning, std::move(name)
 
    //remember, void functions do not return objects
 
@@ -59,7 +63,7 @@ namespace homework {
    }
 
    void attack() const override {
-    std::cout << name << "swings a great" << Weapon << "/n";
+    std::cout << name << " swings a great " << Weapon << "\n";
    }
 
    std::unique_ptr<Entity> clone() const override {
@@ -83,13 +87,14 @@ namespace homework {
     public:
 
     Sorcerer(const std::string& name) : Entity(name) {}
+    //Sorcerer(const Sorcerer&) = default;
 
     void setAbility(const std::string& A) {
       Ability = A;
     }
 
     void attack() const override {
-      std::cout << name << "uses" << Ability << "/n";
+      std::cout << name << " uses " << Ability << "\n";
     }
 
     std::unique_ptr<Entity> clone() const override {
@@ -111,41 +116,41 @@ namespace homework {
 
   //template typename is used as a sort of pointer to the classes
 
-  template <typename T1, typename T2> 
+  //template <typename T1, typename T2> 
 
-  class Duel {
+  //class Duel {
 
-    private:
+    //private:
 
-    T1* combatant1; 
+    //T1* combatant1; 
 
-    T2* combatant2;
+    //T2* combatant2;
 
-    public:
+    //public:
 
-    Duel(T1* one, T2* two) : combatant1(one), combatant2(two) {}
+    //Duel(T1* one, T2* two) : combatant1(one), combatant2(two) {}
 
-    double victory = dist(gen);
+    //double victory = dist(gen);
 
     // the -> operator goes through the pointers combatant1/2 to the 
     // attached classes to access the member functions, here attack()
 
     // the smart pointer unique refers to anything coming from the entity class 
     // to which the combatant classes are attached
-    std::unique_ptr<Entity> Fight() const {
-      combatant1->attack();
-      combatant2->attack();
-    }
+    //std::unique_ptr<Entity> Fight() const {
+      //combatant1->attack();
+      //combatant2->attack();
+    //}
 
     //if the number is higher or lower than 0.5, one or the other, how, another pointer?
     //if exactly 0.5, double fatality. IF statement.
 
     //how to call, attach getName, a new pointer is likely needed to acces getName and clone. 
 
-    std::cout << getName() << ", Hail the Victorious!" << std::endl;
+    //std::cout << getName() << ", Hail the Victorious!" << std::endl;
 
 
-  };
+  //};
 
 
 

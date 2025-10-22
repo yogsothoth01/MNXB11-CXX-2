@@ -19,6 +19,7 @@ namespace homework {
   // get returns the value stored in the heap
   // set sets the value stored in the heap
   // Hint: can use pointer arithmetics on a unique_ptr
+
   class UniqueData{
     public:
       UniqueData(int value);
